@@ -12,10 +12,33 @@ public class Note {
     this.duration = duration;
   }
 
+  public char getNote() {
+    return this.note;
+  }
+
+  public void setNote(char note) {
+    this.note = note;
+  }
+
+  public int getDuration() {
+    return this.duration;
+  }
+
+  public void setDuration(int duration) {
+    this.duration = duration;
+  }
+
   @Override
   public String toString() {
     return (
-      "{" + " note='" + note + "'" + ", duration='" + duration + "'" + "}"
+      "{" +
+      " note='" +
+      getNote() +
+      "'" +
+      ", duration='" +
+      getDuration() +
+      "'" +
+      "}"
     );
   }
 }
