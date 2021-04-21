@@ -31,14 +31,11 @@ public class Note {
   @Override
   public String toString() {
     return (
-      "{" +
-      " note='" +
       getNote() +
-      "'" +
-      ", duration='" +
+      "     " +
       getDuration() +
-      "'" +
-      "}"
+      "     " +
+      (getDuration() == 1 ? "Quaver" : "Crotchet")
     );
   }
 }
