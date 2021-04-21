@@ -63,6 +63,7 @@ public class ScoreDisplay extends PApplet {
   public void draw() {
     background(255);
     drawLines();
+    drawNotes();
   }
 
   private float border;
@@ -74,5 +75,16 @@ public class ScoreDisplay extends PApplet {
     }
   }
 
-  void drawNotes() {}
+  void drawNotes() {
+    textAlign(CENTER, CENTER);
+    textSize(20);
+
+    for (int i = 0; i < notes.size(); i++) {
+      Note n = notes.get(i);
+      stroke(0);
+      fill(0);
+      float x1 = map(i, 0, notes.size(), border * 2, width - border);
+      text(n.getNote(), x1, height / 2 - border);
+    }
+  }
 }
