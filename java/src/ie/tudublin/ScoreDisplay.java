@@ -1,11 +1,21 @@
 package ie.tudublin;
 
+import ddf.minim.*;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import ddf.minim.analysis.FFT;
+import ddf.minim.ugens.*;
 import java.io.*;
 import java.util.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 
 public class ScoreDisplay extends PApplet {
+
+  Minim minim;
+  AudioOutput out;
 
   ArrayList<Note> notes = new ArrayList<Note>();
 
@@ -55,6 +65,12 @@ public class ScoreDisplay extends PApplet {
     printScores();
 
     border = width * 0.05f;
+    minim = new Minim(this);
+
+    // use the getLineOut method of the Minim object to get an AudioOutput object
+    out = minim.getLineOut();
+
+    out.setTempo(80);
   }
 
   public void draw() {
@@ -92,10 +108,17 @@ public class ScoreDisplay extends PApplet {
 
       int sub = 20 * index;
 
+      //   out.pauseNotes();
       if (mouseX >= x1 - 20 && mouseX <= x1 + 20) {
         fill(fillColor, 0, 0);
         stroke(fillColor, 0, 0);
       }
+
+      if (mouseX >= x1 - 10 && mouseX <= x1 + 10) {
+        String play = String.valueOf(n.getNote());
+        out.playNote(play);
+      }
+      //   out.resumeNotes();
 
       circle(x1, height / 2 + 180 - sub, 40);
       line(x1 + 20, height / 2 - sub + 80, x1 + 20, height / 2 + 180 - sub);
