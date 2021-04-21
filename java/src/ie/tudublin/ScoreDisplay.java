@@ -61,6 +61,8 @@ public class ScoreDisplay extends PApplet {
     background(255);
     drawLines();
     drawNotes();
+    // colorMode(HSB);
+
   }
 
   private float border;
@@ -90,8 +92,12 @@ public class ScoreDisplay extends PApplet {
 
       int sub = 20 * index;
 
+      if (mouseX >= x1 - 20 && mouseX <= x1 + 20) {
+        fill(fillColor, 0, 0);
+        stroke(fillColor, 0, 0);
+      }
+
       circle(x1, height / 2 + 180 - sub, 40);
-      //   line(x1 + 20, height / 2 + 60, x1 + 20, height / 2);
       line(x1 + 20, height / 2 - sub + 80, x1 + 20, height / 2 + 180 - sub);
       if (n.getDuration() == 2) {
         line(
@@ -102,5 +108,13 @@ public class ScoreDisplay extends PApplet {
         );
       }
     }
+
+    stroke(0);
+    fill(0);
   }
+
+  int fillColor = 150;
+  //   public void mouseDragged() {
+  //     fillColor = 150;
+  //   }
 }
