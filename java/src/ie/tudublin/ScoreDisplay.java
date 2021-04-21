@@ -17,23 +17,20 @@ public class ScoreDisplay extends PApplet {
 
   public void settings() {
     size(1000, 500);
-
-    // How to convert a character to a number
-    char c = '7'; // c holds the character 7 (55)
-    int i = c - '0'; // i holds the number 7 (55 - 48)
-    println(i);
   }
 
   public void loadScore() {
     Note n = null;
 
     int i = 0;
-    while (i < score.length() - 1) {
+    while (i < score.length()) {
       char note;
       int duration = 1;
 
-      if (Character.isDigit(score.charAt(i + 1)) == true) {
-        duration = score.charAt(i + 1) - '0';
+      if (i + 1 != score.length()) {
+        if (Character.isDigit(score.charAt(i + 1)) == true) {
+          duration = score.charAt(i + 1) - '0';
+        }
       }
 
       if (Character.isDigit(score.charAt(i)) == false) {
@@ -84,7 +81,18 @@ public class ScoreDisplay extends PApplet {
       stroke(0);
       fill(0);
       float x1 = map(i, 0, notes.size(), border * 2, width - border);
+
       text(n.getNote(), x1, height / 2 - border);
+
+      char c = n.getNote();
+      String scale = "DEFGABcd";
+      int index = scale.indexOf(c);
+
+      int sub = 20 * index;
+
+      circle(x1, height / 2 + 180 - sub, 40);
+      //   line(x1 + 20, height / 2 + 60, x1 + 20, height / 2);
+      line(x1 + 20, height / 2 - sub + 80, x1 + 20, height / 2 + 180 - sub);
     }
   }
 }
