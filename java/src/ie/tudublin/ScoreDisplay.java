@@ -56,10 +56,22 @@ public class ScoreDisplay extends PApplet {
   public void setup() {
     loadScore();
     printScores();
+
+    border = width * 0.05f;
   }
 
   public void draw() {
     background(255);
+    drawLines();
+  }
+
+  private float border;
+
+  void drawLines() {
+    for (int i = 0; i < 5; i++) {
+      float y1 = map(i, 0, 5, height / 2, height - border);
+      line(border, y1, width - border, y1);
+    }
   }
 
   void drawNotes() {}
