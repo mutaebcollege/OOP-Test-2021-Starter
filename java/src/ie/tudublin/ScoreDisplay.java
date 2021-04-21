@@ -93,6 +93,14 @@ public class ScoreDisplay extends PApplet {
       circle(x1, height / 2 + 180 - sub, 40);
       //   line(x1 + 20, height / 2 + 60, x1 + 20, height / 2);
       line(x1 + 20, height / 2 - sub + 80, x1 + 20, height / 2 + 180 - sub);
+      if (n.getDuration() == 2) {
+        line(
+          x1 + 20,
+          height / 2 - sub + 80,
+          x1 + 20 + 20,
+          height / 2 + 180 - sub - 80
+        );
+      }
     }
   }
 }
